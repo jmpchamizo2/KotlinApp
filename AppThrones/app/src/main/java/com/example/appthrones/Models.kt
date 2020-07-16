@@ -3,7 +3,7 @@ package com.example.appthrones
 import java.util.*
 
 data class Character(
-    var id: String = UUID.randomUUID().toString()
+    var id: String = UUID.randomUUID().toString(),
     var name: String,
     var born: String,
     var title: String,
