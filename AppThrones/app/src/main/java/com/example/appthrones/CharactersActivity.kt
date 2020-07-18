@@ -10,25 +10,33 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CharactersActivity : AppCompatActivity(){
+    val list: RecyclerView by lazy {
+        val list: RecyclerView = findViewById(R.id.rcv)
+        list.layoutManager = LinearLayoutManager(this)
+        list
+    }
+
+    val adapter: CharactersAdapter by lazy {
+        val adapter = CharactersAdapter {item, position ->
+            showDetails(item.id)
+        }
+        adapter
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters)
 
-        val list: RecyclerView = findViewById(R.id.rcv)
-        val adapter = CharactersAdapter(){item, position ->
-            showDetails()
-        }
-
-        list.layoutManager = LinearLayoutManager(this)
-        list.adapter = adapter
         val characters: MutableList<Character> = CharactersRepo.characters
         adapter.setCharacters(characters)
 
-        Log.d("ChareactersActivity", "len ${characters.size}")
+        list.adapter = adapter
     }
 
-    fun showDetails() {
+    fun showDetails(characterId: String) {
         val intent: Intent = Intent(this@CharactersActivity, DetailActivity::class.java)
+        intent.putExtra("key_id", characterId)
         startActivity(intent)
     }
 

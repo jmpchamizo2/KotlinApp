@@ -31,4 +31,8 @@ object CharactersRepo {
                 words = "Lema $int"
             ))
     }
+
+    fun findCharacterById(id: String?): Character? {
+        return characters.find { it.id == id}
+    }
 }

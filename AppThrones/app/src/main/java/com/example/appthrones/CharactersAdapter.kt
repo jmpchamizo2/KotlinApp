@@ -3,22 +3,13 @@ package com.example.appthrones
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CharactersAdapter: RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder> {
 
-    constructor():super(){
-        itemClickListener = null
-    }
-
-    constructor(itemClickListener: ((Character, Int) -> Unit)):super(){
-        this.itemClickListener = itemClickListener
-    }
+class CharactersAdapter(val itemClickListener: ((Character, Int) -> Unit)): RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
 
     private val items = mutableListOf<Character>()
-    private val itemClickListener: ((Character, Int) -> Unit)?
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_character, parent, false)
@@ -26,9 +17,7 @@ class CharactersAdapter: RecyclerView.Adapter<CharactersAdapter.CharacterViewHol
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        val item = items[position]
-        holder.character = item
-
+        holder.character = items[position]
     }
 
     override fun getItemCount(): Int {
@@ -57,7 +46,4 @@ class CharactersAdapter: RecyclerView.Adapter<CharactersAdapter.CharacterViewHol
         }
 
     }
-
-
-
 }

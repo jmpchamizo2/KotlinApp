@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+
+    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rcv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:minWidth="150dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".DetailActivity">
+
+        <TextView
+            android:id="@+id/txvCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personaje"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="John Snow"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lord Comandandte de la guardia de la noche"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvDater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="283 AC"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvActor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kit Harington"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='"I know nothing"'
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvFather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ned Stark"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/txvMather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sin esposa"
+            android:layout_marginBottom="4dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Casa Stark" />
+
+        </LinearLayout>
+</LinearLayout>
