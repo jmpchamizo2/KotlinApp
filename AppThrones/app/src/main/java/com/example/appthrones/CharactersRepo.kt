@@ -1,5 +1,7 @@
 package com.example.appthrones
 
+import kotlin.random.Random
+
 object CharactersRepo {
     val characters: MutableList<Character> = mutableListOf()
     get() {
@@ -25,14 +27,18 @@ object CharactersRepo {
             mother = "madre $int",
             father = "padre $int",
             spouse = "espos@ $int",
-            house = House(
-                name = "casa $int",
-                region = "region $int",
-                words = "Lema $int"
-            ))
+            house = dummyHouse())
     }
 
     fun findCharacterById(id: String?): Character? {
         return characters.find { it.id == id}
+    }
+
+    private fun dummyHouse(): House {
+        val ids = arrayOf("stark", "lannister", "targaryen", "tyrell", "arryn", "baratheon", "tully")
+        val randomIdPosition = Random.nextInt(ids.size)
+        return House(name = ids[randomIdPosition],
+            region = "Región",
+            words = "Lema")
     }
 }

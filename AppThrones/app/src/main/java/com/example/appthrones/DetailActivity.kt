@@ -14,23 +14,15 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         val id = intent.getStringExtra("key_id")
-        val character = CharactersRepo.findCharacterById(id)
-        character?.let {
-            with(character) {
-                txvName.text = name
-                txvDater.text = born
-                txvActor.text = actor
-                txvFather.text = father
-                txvMather.text = mother
-                txvQuote.text = quote
-                txvTitle.text = title
-                btn.text = house.name
+        if (savedInstanceState == null){
+            id?.let{
+                val fragment = DetailFragment.new_instance(id)
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.detail_container, fragment)
+                    .commit()
             }
-        }
 
-        val button: Button = findViewById(R.id.btn)
-        button.setOnClickListener({
-            Toast.makeText(this@DetailActivity, character?.house?.words, Toast.LENGTH_LONG).show()
-        })
+        }
     }
 }

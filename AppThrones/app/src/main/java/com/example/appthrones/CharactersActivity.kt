@@ -8,36 +8,51 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-class CharactersActivity : AppCompatActivity(){
-    val list: RecyclerView by lazy {
-        val list: RecyclerView = findViewById(R.id.rcv)
-        list.layoutManager = LinearLayoutManager(this)
-        list
-    }
-
-    val adapter: CharactersAdapter by lazy {
-        val adapter = CharactersAdapter {item, position ->
-            showDetails(item.id)
-        }
-        adapter
-    }
-
+import kotlinx.android.synthetic.main.activity_characters.*
+class CharactersActivity : AppCompatActivity(), CharactersFragment.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters)
 
-        val characters: MutableList<Character> = CharactersRepo.characters
-        adapter.setCharacters(characters)
 
-        list.adapter = adapter
+
+        if (savedInstanceState ==  null ){
+            val fragment = CharactersFragment()
+            this.supportFragmentManager
+                .beginTransaction()
+                .add(R.id.list_container, fragment)
+                .commit()
+        }
+
     }
 
-    fun showDetails(characterId: String) {
-        val intent: Intent = Intent(this@CharactersActivity, DetailActivity::class.java)
+    override fun onItemClicked(character: Character) {
+
+        if (isDetailViewAvailable()){
+            showFragmentDetail(character.id)
+        } else {
+            launchDetailActivity(character.id)
+        }
+
+    }
+
+    private fun isDetailViewAvailable() = detail_container != null
+
+    private fun showFragmentDetail(characterId: String) {
+        val detailFragment = DetailFragment.new_instance(characterId)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.detail_container, detailFragment)
+            .commit()
+    }
+
+    private fun launchDetailActivity(characterId: String) {
+        val intent: Intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("key_id", characterId)
         startActivity(intent)
     }
+
 
 }
