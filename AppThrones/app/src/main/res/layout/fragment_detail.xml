@@ -5,71 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".DetailFragment">
 
-    <TextView
-        android:id="@+id/txvCharacter"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Personaje"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:textSize="20sp"/>
+        android:layout_height="0dp"
+        android:layout_weight="0.45">
 
-    <TextView
-        android:id="@+id/txvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="John Snow"
-        android:layout_marginBottom="4dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="48dp">
 
-    <TextView
-        android:id="@+id/txvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Lord Comandandte de la guardia de la noche"
-        android:layout_marginBottom="4dp"/>
+            <ImageView
+                android:id="@+id/img_character"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test"/>
 
-    <TextView
-        android:id="@+id/txvDater"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="283 AC"
-        android:layout_marginBottom="4dp"/>
+            <View
+                android:id="@+id/imgOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/starkOverlay"/>
 
-    <TextView
-        android:id="@+id/txvActor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Kit Harington"
-        android:layout_marginBottom="4dp"/>
+            <TextView
+                android:id="@+id/label_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_above="@+id/label_title"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                tools:text="Jon Snow"/>
+            <TextView
+                android:id="@+id/label_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginStart="16dp"
+                tools:text = "Lord comandante de la noche"/>
 
-    <TextView
-        android:id="@+id/txvQuote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text='"I know nothing"'
-        android:layout_marginBottom="4dp"/>
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txvFather"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Ned Stark"
-        android:layout_marginBottom="4dp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            app:fabSize="normal" />
 
-    <TextView
-        android:id="@+id/txvMather"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Sin esposa"
-        android:layout_marginBottom="4dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn"
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Casa Stark" />
+        android:layout_height="0dp"
+        android:layout_weight="0.55"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txvCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personaje"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txvDater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="283 AC"
+            android:drawableLeft="@android:drawable/ic_born"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/txvActor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Kit Harington"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/txvQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text='"I know nothing"'
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/txvFather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Ned Stark"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/txvMather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Sin esposa"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

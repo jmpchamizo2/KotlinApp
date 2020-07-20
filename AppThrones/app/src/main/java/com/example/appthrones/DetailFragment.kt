@@ -1,10 +1,13 @@
 package com.example.appthrones
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -27,6 +30,7 @@ class DetailFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,18 +39,19 @@ class DetailFragment : Fragment(){
 
         character?.let {
             with(character) {
-                txvName.text = name
+                label_name.text = name
                 txvDater.text = born
                 txvActor.text = actor
                 txvFather.text = father
                 txvMather.text = mother
                 txvQuote.text = quote
-                txvTitle.text = title
-                btn.text = house.name
+                label_title.text = title
+                imgOverlay.background = ContextCompat.getDrawable(context!!, House.getOverlayColor(character.house.name))
+                fab.backgroundTintList = ContextCompat.getColorStateList(context!!, House.getBaseColor(character.house.name))
             }
         }
 
-        btn.setOnClickListener({
+        fab.setOnClickListener({
             Toast.makeText(context, character?.house?.words, Toast.LENGTH_LONG).show()
         })
     }
