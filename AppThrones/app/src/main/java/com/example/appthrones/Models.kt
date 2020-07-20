@@ -11,8 +11,7 @@ data class Character(
     var title: String,
     var actor: String,
     var quote: String,
-    var father: String,
-    var mother: String,
+    var parents: String,
     var spouse: String,
     var house: House)
 

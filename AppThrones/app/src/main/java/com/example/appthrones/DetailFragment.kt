@@ -42,8 +42,8 @@ class DetailFragment : Fragment(){
                 label_name.text = name
                 txvDater.text = born
                 txvActor.text = actor
-                txvFather.text = father
-                txvMather.text = mother
+                txvParents.text = parents
+                txvSpouse.text = spouse
                 txvQuote.text = quote
                 label_title.text = title
                 imgOverlay.background = ContextCompat.getDrawable(context!!, House.getOverlayColor(character.house.name))

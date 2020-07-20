@@ -90,36 +90,56 @@
             android:id="@+id/txvDater"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="283 AC"
-            android:drawableLeft="@android:drawable/ic_born"
-            android:layout_marginBottom="16dp"/>
+            android:drawableLeft="@drawable/ic_born"
+            android:drawableStart="@drawable/ic_born"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
+            android:layout_marginBottom="16dp"
+            tools:text="283 AC" />
 
         <TextView
             android:id="@+id/txvActor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_actor"
+            android:drawableStart="@drawable/ic_actor"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
+            android:layout_marginBottom="16dp"
             tools:text="Kit Harington"
-            android:layout_marginBottom="16dp"/>
+/>
 
         <TextView
             android:id="@+id/txvQuote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text='"I know nothing"'
+            android:drawableLeft="@drawable/ic_quote"
+            android:drawableStart="@drawable/ic_quote"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
             android:layout_marginBottom="16dp"/>
 
         <TextView
-            android:id="@+id/txvFather"
+            android:id="@+id/txvParents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Ned Stark"
+            android:drawableLeft="@drawable/ic_parents"
+            android:drawableStart="@drawable/ic_parents"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
             android:layout_marginBottom="16dp"/>
 
         <TextView
-            android:id="@+id/txvMather"
+            android:id="@+id/txvSpouse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Sin esposa"
+            android:drawableLeft="@drawable/ic_spouse"
+            android:drawableStart="@drawable/ic_spouse"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
             android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
