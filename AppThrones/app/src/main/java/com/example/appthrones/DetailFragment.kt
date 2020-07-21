@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_detail.*
-
+import kotlinx.android.synthetic.main.data_character.*
+import kotlinx.android.synthetic.main.header_character.*
 class DetailFragment : Fragment(){
 
     companion object{
@@ -42,12 +42,13 @@ class DetailFragment : Fragment(){
                 label_name.text = name
                 txvDater.text = born
                 txvActor.text = actor
-                txvParents.text = parents
+                txvParents.text = "$mother & $father"
                 txvSpouse.text = spouse
                 txvQuote.text = quote
                 label_title.text = title
                 imgOverlay.background = ContextCompat.getDrawable(context!!, House.getOverlayColor(character.house.name))
                 fab.backgroundTintList = ContextCompat.getColorStateList(context!!, House.getBaseColor(character.house.name))
+                fab.setImageDrawable(ContextCompat.getDrawable(context!!, House.getIcon(character.house.name)))
             }
         }
 

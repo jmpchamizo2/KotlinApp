@@ -24,7 +24,8 @@ object CharactersRepo {
             born = "nacio en $int",
             actor = "actor $int",
             quote = "Frase $int",
-            parents = "padres $int",
+            father = "padre $int",
+            mother = "madre $int",
             spouse = "espos@ $int",
             house = dummyHouse())
     }

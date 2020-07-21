@@ -11,7 +11,8 @@ data class Character(
     var title: String,
     var actor: String,
     var quote: String,
-    var parents: String,
+    var father: String,
+    var mother: String,
     var spouse: String,
     var house: House)
 
@@ -21,28 +22,33 @@ data class House(
     var words: String){
 
     companion object{
-        private val DEFAULT_COLORS = arrayOf(R.color.starkOverlay, R.color.starkBase)
-        private val colors =  mapOf(
-            Pair("stark", arrayOf(R.color.starkOverlay, R.color.starkBase)),
-            Pair("lannister", arrayOf(R.color.lannisterOverlay, R.color.lannisterBase)),
-            Pair("tyrell", arrayOf(R.color.tyrellOverlay, R.color.tyrelBase)),
-            Pair("arryn", arrayOf(R.color.arrynOverlay, R.color.arrynBase)),
-            Pair("targaryen", arrayOf(R.color.targaryenOverlay, R.color.targaryenBase)),
-            Pair("martel", arrayOf(R.color.martelOverlay, R.color.martelBase)),
-            Pair("baratheon", arrayOf(R.color.baratheonOverlay, R.color.baratheonBase)),
-            Pair("greyjoy", arrayOf(R.color.greyjoyOverlay, R.color.greyjoyBase)),
-            Pair("frey", arrayOf(R.color.freyOverlay, R.color.freyBase)),
-            Pair("tully", arrayOf(R.color.tullyOVerlay, R.color.tullyBase))
+        private val DEFAULT_RESOURCES = arrayOf(R.color.starkOverlay, R.color.starkBase, R.drawable.ic_stark)
+        private val resources =  mapOf(
+            Pair("stark", arrayOf(R.color.starkOverlay, R.color.starkBase, R.drawable.ic_stark)),
+            Pair("lannister", arrayOf(R.color.lannisterOverlay, R.color.lannisterBase, R.drawable.ic_lannister)),
+            Pair("tyrell", arrayOf(R.color.tyrellOverlay, R.color.tyrelBase, R.drawable.ic_tyrell)),
+            Pair("arryn", arrayOf(R.color.arrynOverlay, R.color.arrynBase, R.drawable.ic_arryn)),
+            Pair("targaryen", arrayOf(R.color.targaryenOverlay, R.color.targaryenBase, R.drawable.ic_targaryen)),
+            Pair("martel", arrayOf(R.color.martelOverlay, R.color.martelBase, R.drawable.ic_martell)),
+            Pair("baratheon", arrayOf(R.color.baratheonOverlay, R.color.baratheonBase, R.drawable.ic_baratheon)),
+            Pair("greyjoy", arrayOf(R.color.greyjoyOverlay, R.color.greyjoyBase, R.drawable.ic_greyjoy)),
+            Pair("frey", arrayOf(R.color.freyOverlay, R.color.freyBase, R.drawable.ic_frey)),
+            Pair("tully", arrayOf(R.color.tullyOVerlay, R.color.tullyBase, R.drawable.ic_tully))
         )
 
         @RequiresApi(Build.VERSION_CODES.N)
         fun getOverlayColor(houseId: String): Int{
-            return colors.getOrDefault(houseId, DEFAULT_COLORS)[0]
+            return resources.getOrDefault(houseId, DEFAULT_RESOURCES)[0]
         }
 
         @RequiresApi(Build.VERSION_CODES.N)
         fun getBaseColor(houseId: String): Int{
-            return colors.getOrDefault(houseId, DEFAULT_COLORS)[1]
+            return resources.getOrDefault(houseId, DEFAULT_RESOURCES)[1]
+        }
+
+        @RequiresApi(Build.VERSION_CODES.N)
+        fun getIcon(houseId: String): Int {
+            return resources.getOrDefault(houseId, DEFAULT_RESOURCES)[2]
         }
     }
 
