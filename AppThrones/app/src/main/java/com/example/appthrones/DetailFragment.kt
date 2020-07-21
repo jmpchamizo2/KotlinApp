@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.data_character.*
 import kotlinx.android.synthetic.main.header_character.*
+import kotlinx.android.synthetic.main.item_character.view.*
+
 class DetailFragment : Fragment(){
 
     companion object{
@@ -49,12 +52,25 @@ class DetailFragment : Fragment(){
                 imgOverlay.background = ContextCompat.getDrawable(context!!, House.getOverlayColor(character.house.name))
                 fab.backgroundTintList = ContextCompat.getColorStateList(context!!, House.getBaseColor(character.house.name))
                 fab.setImageDrawable(ContextCompat.getDrawable(context!!, House.getIcon(character.house.name)))
+
+                Picasso.get()
+                    .load(character.img)
+                    .placeholder(R.drawable.test)
+                    .into(img_character)
             }
         }
 
-        fab.setOnClickListener({
-            Toast.makeText(context, character?.house?.words, Toast.LENGTH_LONG).show()
-        })
+        fab.setOnClickListener {
+            if(character !=  null) {
+                showDialog(character.house)
+            }
+        }
+
+    }
+
+    private fun showDialog(house: House) {
+        HouseDialog.newInstance(house).show(childFragmentManager, "house_dialog")
+
     }
 
 }

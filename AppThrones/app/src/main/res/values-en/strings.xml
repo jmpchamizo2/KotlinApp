@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">AppThrones</string>
     <string name="label_error">Request error</string>
+    <string name="label_retry">Retry</string>
 </resources>

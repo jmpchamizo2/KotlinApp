@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_character.view.*
 
 
@@ -44,9 +45,13 @@ class CharactersAdapter(val itemClickListener: ((Character, Int) -> Unit)): Recy
 
                     val overlayColor = House.getOverlayColor(value.house.name)
                     itemView.imgOverlay.background = ContextCompat.getDrawable(itemView.context, overlayColor)
-                    field = value
-                }
 
+                    Picasso.get()
+                        .load(value.img)
+                        .placeholder(R.drawable.test)
+                        .into(itemView.img_character)
+                }
+                field = value
             }
         init {
             itemView.setOnClickListener{

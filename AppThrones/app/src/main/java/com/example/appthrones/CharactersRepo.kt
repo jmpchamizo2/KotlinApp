@@ -15,8 +15,6 @@ object CharactersRepo {
     private var characters: MutableList<Character> = mutableListOf()
 
 
-
-
     fun requestCharacters(context: Context,
                           success: ((MutableList<Character>) -> Unit),
                           err: (() -> Unit)) {
@@ -56,44 +54,21 @@ object CharactersRepo {
            jsonCharacter.getString("father"),
            jsonCharacter.getString("mother"),
            jsonCharacter.getString("spouse"),
-           parseHouse(jsonCharacter.getJSONObject("house"))       )
+           jsonCharacter.getString("img"),
+           parseHouse(jsonCharacter.getJSONObject("house")))
     }
 
 
     private fun parseHouse(jsonHouse: JSONObject): House {
         return House(jsonHouse.getString("name"),
         jsonHouse.getString("region"),
-        jsonHouse.getString("words"))
+        jsonHouse.getString("words"),
+        jsonHouse.getString("img"))
     }
 
-    private fun dummyCharacters(): MutableList<Character>{
-        return (1..10).map {
-            intToCharacter(it)
-        }.toMutableList()
-    }
-
-    private fun intToCharacter(int: Int): Character{
-        return Character(
-            name = "Personaje $int",
-            title = "Titulo $int",
-            born = "nacio en $int",
-            actor = "actor $int",
-            quote = "Frase $int",
-            father = "padre $int",
-            mother = "madre $int",
-            spouse = "espos@ $int",
-            house = dummyHouse())
-    }
 
     fun findCharacterById(id: String?): Character? {
         return characters.find { it.id == id}
     }
 
-    private fun dummyHouse(): House {
-        val ids = arrayOf("stark", "lannister", "targaryen", "tyrell", "arryn", "baratheon", "tully")
-        val randomIdPosition = Random.nextInt(ids.size)
-        return House(name = ids[randomIdPosition],
-            region = "Región",
-            words = "Lema")
-    }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_characters.*
 
 class CharactersFragment: Fragment() {
 
@@ -44,23 +45,37 @@ class CharactersFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        list.adapter = adapter
 
-
-
+        btnRetry.setOnClickListener{
+            retry()
+        }
     }
 
     override fun onResume() {
         super.onResume()
         requestCharacters()
-        list.adapter = adapter
+
+    }
+
+    private fun retry() {
+        layoutError.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+
+        requestCharacters()
     }
 
     private fun requestCharacters(){
         CharactersRepo.requestCharacters(context!!,
             {charaters ->
+                progressBar.visibility =View.INVISIBLE
+                list.visibility = View.VISIBLE
                 adapter.setCharacters(charaters)
             },
-            {})
+            {
+                progressBar.visibility =View.INVISIBLE
+                layoutError.visibility = View.VISIBLE
+            })
     }
 
     interface OnItemClickListener {
