@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppThrones</string>
+    <string name="label_error">Ocurrió un error al solicitar la información</string>
 </resources>

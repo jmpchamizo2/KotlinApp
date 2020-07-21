@@ -44,16 +44,23 @@ class CharactersFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val characters: MutableList<Character> = CharactersRepo.characters
-        adapter.setCharacters(characters)
 
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestCharacters()
         list.adapter = adapter
     }
 
-    fun showDetails(characterId: String) {
-        val intent: Intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("key_id", characterId)
-        startActivity(intent)
+    private fun requestCharacters(){
+        CharactersRepo.requestCharacters(context!!,
+            {charaters ->
+                adapter.setCharacters(charaters)
+            },
+            {})
     }
 
     interface OnItemClickListener {
